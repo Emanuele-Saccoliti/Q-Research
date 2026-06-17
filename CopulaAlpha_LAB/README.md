@@ -134,9 +134,6 @@ The main configuration lives in the `MVPConfig` dataclass inside the notebook.
 | Average rank IC | 0.039 |
 
 
-The validation period is the strongest, while the test period remains positive but much weaker. This matters: the result should be read as a research signal with some predictive content, not as a finished strategy.
-
-
 ## Interpretation
 The project shows that rolling copula features can produce a measurable relative-value signal across selected ETF pairs. The positive IC and low market beta suggest that the signal is not simply a directional equity market bet.
 
