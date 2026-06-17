@@ -81,7 +81,6 @@ The strategy is built to be dollar-neutral at the pair level, with one long leg 
 The backtest includes several basic risk and realism controls:
 
 - pair-specific entry and exit thresholds;
-- expected-edge filter estimated only on the training set;
 - maximum holding period;
 - maximum daily turnover constraint;
 - one-day signal shift to avoid look-ahead bias;
