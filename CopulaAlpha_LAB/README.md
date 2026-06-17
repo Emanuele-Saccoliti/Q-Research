@@ -115,7 +115,6 @@ Run the notebook from top to bottom. The notebook will either use the cached pro
 The main configuration lives in the `MVPConfig` dataclass inside the notebook.
 
 ## Results
-Main full-period results:
 
 | Metric | Value |
 |---|---:|
@@ -134,13 +133,6 @@ Main full-period results:
 | Average IC | 0.038 |
 | Average rank IC | 0.039 |
 
-Performance by period:
-
-| Period | Annualized Return | Volatility | Sharpe | Max Drawdown |
-|---|---:|---:|---:|---:|
-| Train | 0.21% | 0.77% | 0.28 | -1.89% |
-| Validation | 2.36% | 1.65% | 1.42 | -0.87% |
-| Test | 0.24% | 0.89% | 0.28 | -1.46% |
 
 The validation period is the strongest, while the test period remains positive but much weaker. This matters: the result should be read as a research signal with some predictive content, not as a finished strategy.
 
