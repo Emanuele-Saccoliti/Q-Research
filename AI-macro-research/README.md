@@ -1,4 +1,4 @@
-# Dynamic Macro Research Extension
+# Description
 
 An extended version of the original AI Macro Research Assistant. It combines LLM-based news normalization with NLP/ML theme discovery, dynamic narrative metrics, macro-regime inference, and transparent cross-asset research mapping.
 
