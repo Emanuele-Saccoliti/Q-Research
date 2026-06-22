@@ -34,7 +34,7 @@ Macro-regime inference and cross-asset research report
 │   ├── mapping.py                  # transparent cross-asset mapping
 │   ├── regimes.py                  # macro-axis and regime inference
 │   ├── reporting.py                # Markdown and JSON reports
-│   ├── retrievers.py               # DuckDuckGo and RSS retrieval
+│   ├── retrievers.py               # online search and RSS retrieval
 │   ├── schemas.py                  # Pydantic contracts
 │   └── workflow.py                 # end-to-end orchestration
 ├── tests/
