@@ -128,12 +128,6 @@ ruff check .
 pytest
 ```
 
-## Limitations
-
-- Prototype-based macro mapping is a semantic baseline, not a trained alpha model.
-- Cross-asset coefficients encode transparent research priors and require historical validation.
-- Search snippets may omit context or publication timestamps.
-- Reliable regime research should combine narrative features with structured macro and market data.
 
 ## Disclaimer
 
