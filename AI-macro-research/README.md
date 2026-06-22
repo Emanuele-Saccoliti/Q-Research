@@ -1,8 +1,7 @@
 # Description
 
-An extended version of the original AI Macro Research Assistant. It combines LLM-based news normalization with NLP/ML theme discovery, dynamic narrative metrics, macro-regime inference, and transparent cross-asset research mapping.
+AI-powered macro research pipeline that combines LLM-based financial news processing with NLP and machine learning to identify and classify emerging themes across growth, inflation, monetary policy, liquidity, and risk sentiment. These insights are then aggregated into dynamic state variables for macro-regime monitoring and cross-asset analysis.
 
-The original copied implementation is preserved in `legacy/`.
 
 ## Pipeline
 
