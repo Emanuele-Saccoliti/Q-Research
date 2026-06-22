@@ -14,37 +14,12 @@ LLM event normalization and summarization
 Text embeddings
         ↓
 Dynamic clustering of related events
-        ↓
-Theme attention, momentum, breadth, novelty, and persistence
-        ↓
-Multi-label mapping to growth, inflation, policy, liquidity, and risk sentiment
+        ↓        
+Multi-label mapping (growth, inflation, policy, liquidity, and risk sentiment)
         ↓
 Macro-regime inference and cross-asset research report
 ```
 
-## What Is Dynamic
-
-- The number of themes is not fixed in advance. Agglomerative clustering discovers groups from the current event set.
-- Theme IDs are matched to historical cluster centroids, allowing narratives to be followed across runs.
-- Attention measures the current share of deduplicated events assigned to a theme.
-- Momentum compares current attention with the theme's historical distribution.
-- Breadth measures coverage and diversity across independent sources.
-- Novelty measures semantic distance from historical theme centroids.
-- Persistence measures how frequently a matched theme remains active across recent runs.
-
-## Macro Mapping
-
-Each theme is mapped to a continuous macro vector:
-
-```text
-Growth:         contraction -1 ←→ +1 expansion
-Inflation:      disinflation -1 ←→ +1 inflation
-Policy:         easing -1 ←→ +1 tightening
-Liquidity:      contraction -1 ←→ +1 expansion
-Risk sentiment: risk-off -1 ←→ +1 risk-on
-```
-
-The default implementation uses semantic anchor prototypes. It is intentionally replaceable with a supervised multi-label classifier once a reviewed training set is available.
 
 ## Project Structure
 
