@@ -1,0 +1,5 @@
+recovery_rate_default: 0.40
+discount_rate: 0.035
+premium_frequency: 4
+cds_tenors_years: [1, 3, 5, 7, 10]
+notional_for_cs01: 1000000
