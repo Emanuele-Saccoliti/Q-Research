@@ -1,0 +1,10 @@
+rolling_zscore_window: 40
+rolling_zscore_min_periods: 15
+entry_zscore: 1.25
+exit_zscore: 0.25
+max_transaction_cost_bps: 35.0
+target_cs01_per_trade: 3500.0
+max_gross_notional: 25000000
+max_net_notional: 9000000
+issuer_notional_limit: 6000000
+rating_notional_limit: 14000000

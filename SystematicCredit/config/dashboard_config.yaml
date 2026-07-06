@@ -1,0 +1,5 @@
+workbook_name: bond_cds_basis_dashboard.xlsx
+output_dir: outputs/systematic_credit_toolkit
+visible_sample_rows: 120
+dashboard_title: Bond-CDS Basis Trading Dashboard
+source_note: Synthetic data generated for interview and research demonstration.

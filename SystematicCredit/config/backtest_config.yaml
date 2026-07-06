@@ -1,0 +1,14 @@
+initial_capital: 10000000
+annualization_factor: 252
+base_half_spread_fraction: 0.15
+regime_cost_multipliers:
+  risk_on: 0.85
+  neutral: 1.0
+  spread_widening: 1.35
+  risk_off: 1.75
+  liquidity_stress: 2.25
+stress_scenarios_bps:
+  mild_widening: 25
+  risk_off_gap: 75
+  crisis_widening: 150
+  relief_tightening: -50
