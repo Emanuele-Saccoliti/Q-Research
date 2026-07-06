@@ -4,15 +4,6 @@ Python research engine and Excel trading-dashboard export for a systematic credi
 
 The project calibrates CDS-implied credit curves, bootstraps hazard rates and survival probabilities, compares corporate bond spreads with maturity-matched CDS spreads, generates bond-CDS basis signals, sizes trades by CS01, applies a macro hedge overlay, runs a transaction-cost-aware backtest, and exports the results to an Excel workbook.
 
-Project path:
-
-```text
-/Users/emanuelesaccoliti/VS Code/Q-Research/SystematicCredit
-```
-
-## 1. Project Objective
-
-This project is designed as an interview-ready quantitative finance case study for credit trading, credit derivatives, systematic credit research, or relative-value strategy roles.
 
 The main idea is:
 
@@ -41,7 +32,7 @@ Synthetic issuer-level CDS and bond market data
 -> Excel dashboard export
 ```
 
-## 2. Important Clarification: Python Engine vs Excel Dashboard
+## 1. Important Clarification: Python Engine vs Excel Dashboard
 
 This is not currently a Streamlit-style interactive web app.
 
@@ -69,7 +60,7 @@ If `node` is not available in your shell, use the bundled Codex Node runtime:
 /Users/emanuelesaccoliti/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node scripts/build_dashboard.mjs
 ```
 
-## 3. Repository Structure
+## 2. Repository Structure
 
 ```text
 SystematicCredit/
@@ -122,7 +113,7 @@ SystematicCredit/
 `-- tests/
 ```
 
-## 4. Setup From Scratch
+## 3. Setup From Scratch
 
 If `.venv` already exists, you can skip the virtual-environment creation and just activate it.
 
@@ -145,7 +136,7 @@ Expected result:
 11 passed
 ```
 
-## 5. Running The Python Pipeline
+## 4. Running The Python Pipeline
 
 From the project root:
 
@@ -179,7 +170,7 @@ Sharpe ratio: ...
 Max drawdown: ...
 ```
 
-## 6. Rebuilding The Excel Dashboard
+## 5. Rebuilding The Excel Dashboard
 
 After running the Python pipeline, build the Excel workbook:
 
@@ -211,7 +202,7 @@ The builder also renders PNG previews for visual QA:
 outputs/systematic_credit_toolkit/previews/
 ```
 
-## 7. Full End-To-End Command Sequence
+## 6. Full End-To-End Command Sequence
 
 Use this when you want to regenerate everything:
 
@@ -233,7 +224,7 @@ python scripts/run_pipeline.py
 open "outputs/systematic_credit_toolkit/bond_cds_basis_dashboard.xlsx"
 ```
 
-## 8. Main Outputs
+## 7. Main Outputs
 
 The Python pipeline writes these files to `data/output/`:
 
@@ -280,9 +271,9 @@ Config
 
 Large research tables are available in full as CSV files in `data/output/`. The Excel workbook may use a trimmed latest-row view for large sheets to keep the workbook responsive.
 
-## 9. Financial Methodology
+## 8. Financial Methodology
 
-### 9.1 CDS Curve Calibration
+### 8.1 CDS Curve Calibration
 
 The calibration module takes market CDS spreads by issuer, date, and tenor.
 
@@ -312,7 +303,7 @@ Key assumptions:
 - quarterly premium payments;
 - par-spread calibration by equating premium leg and protection leg.
 
-### 9.2 Survival Probabilities
+### 8.2 Survival Probabilities
 
 Survival probability is computed from the cumulative hazard:
 
@@ -322,7 +313,7 @@ S(t) = exp(-integral hazard_rate dt)
 
 Higher CDS spreads imply higher default intensity and therefore lower survival probability.
 
-### 9.3 Maturity-Matched CDS Spread
+### 8.3 Maturity-Matched CDS Spread
 
 Corporate bonds often do not mature exactly on standard CDS tenors. The maturity matcher estimates a CDS-implied spread for each bond maturity using the calibrated CDS curve.
 
@@ -335,7 +326,7 @@ Bond maturity = 6Y
 Matched CDS spread ~= curve-implied 6Y spread
 ```
 
-### 9.4 Bond-CDS Basis
+### 8.4 Bond-CDS Basis
 
 The basis is:
 
@@ -355,7 +346,7 @@ bond spread < CDS-implied spread
 cash bond may be rich versus CDS
 ```
 
-### 9.5 Rolling Z-Score Signal
+### 8.5 Rolling Z-Score Signal
 
 The strategy standardizes basis using a rolling z-score:
 
@@ -378,7 +369,7 @@ exit or reduce mean-reversion trade
 
 The signal layer also applies a transaction-cost filter to avoid low-edge trades when estimated bid-ask costs are too high.
 
-### 9.6 CS01-Weighted Position Sizing
+### 8.6 CS01-Weighted Position Sizing
 
 CS01 measures the P&L sensitivity to a one-basis-point move in credit spreads.
 
@@ -396,7 +387,7 @@ The sizer also applies:
 - issuer concentration limit;
 - rating concentration limit.
 
-### 9.7 Macro Regime Classifier
+### 8.7 Macro Regime Classifier
 
 Macro regimes are classified using transparent rules based on:
 
@@ -416,7 +407,7 @@ risk_off
 liquidity_stress
 ```
 
-### 9.8 Hedge Overlay
+### 8.8 Hedge Overlay
 
 During risk-off, spread-widening, or liquidity-stress regimes, the hedge overlay reduces strategy exposure and adds a credit-index hedge based on portfolio CS01.
 
@@ -430,7 +421,7 @@ hedge_cs01
 hedge_notional
 ```
 
-### 9.9 Transaction Costs
+### 8.9 Transaction Costs
 
 Transaction costs are estimated from:
 
@@ -442,7 +433,7 @@ Transaction costs are estimated from:
 
 Costs are higher in stressed regimes and for less liquid bonds.
 
-### 9.10 P&L Attribution
+### 8.10 P&L Attribution
 
 The backtest decomposes daily P&L into:
 
@@ -467,7 +458,7 @@ hit_rate
 ending_nav
 ```
 
-## 10. Configuration Files
+## 9. Configuration Files
 
 ### `config/curve_config.yaml`
 
@@ -514,7 +505,7 @@ stress_scenarios_bps
 
 Controls dashboard naming and output configuration.
 
-## 11. Module Map
+## 10. Module Map
 
 ### Data
 
@@ -634,7 +625,7 @@ scripts/build_dashboard.mjs
 
 Builds the Excel workbook using the generated dashboard payload.
 
-## 12. Tests
+## 11. Tests
 
 Run all tests:
 
@@ -658,15 +649,8 @@ Test coverage includes:
 - transaction costs;
 - performance metrics.
 
-## 13. Excel Notes
+## 12. Excel Notes
 
-The Excel workbook is a generated dashboard artifact, not the source of truth.
-
-Source of truth:
-
-```text
-Python code + config files + generated CSV/JSON outputs
-```
 
 Excel is useful for:
 
@@ -690,7 +674,8 @@ excel/vba_macros/refresh_dashboard.bas
 
 It is a lightweight refresh/calculation helper, not a full Python launcher.
 
-## 14. Troubleshooting
+
+## 13. Troubleshooting
 
 ### `ModuleNotFoundError: No module named pandas`
 
@@ -719,29 +704,7 @@ python scripts/run_pipeline.py
 node scripts/build_dashboard.mjs
 ```
 
-### Full data not visible in Excel
-
-The full research outputs are in:
-
-```text
-data/output/
-```
-
-The Excel workbook may display a trimmed latest-row view on very large sheets to keep the file responsive.
-
-### Results change after editing assumptions
-
-This is expected. Strategy performance depends on:
-
-- synthetic data seed;
-- transaction-cost assumptions;
-- entry and exit thresholds;
-- CS01 target;
-- hedge ratios;
-- macro regime rules;
-- liquidity and bid-ask assumptions.
-
-## 15. Limitations
+## 14. Limitations
 
 This is a research and interview project, not a production trading system.
 
@@ -749,48 +712,13 @@ Current limitations:
 
 - data is synthetic by default;
 - CDS curves use simplified assumptions;
-- funding, repo, deliverability, CTD, coupon effects, and bond-specific optionality are simplified;
 - transaction costs are modelled, not sourced from executable quotes;
 - hedge proxies are simplified;
 - Excel is a generated snapshot, not a live trading terminal.
 
-A production-grade implementation would require:
 
-- live issuer CDS curves;
-- validated bond reference data;
-- recovery-rate assumptions by issuer/seniority;
-- clean and dirty price handling;
-- accrued interest and coupon schedules;
-- TRACE/Bloomberg/dealer data;
-- executable bid/ask quotes;
-- repo and funding assumptions;
-- issuer, sector, rating, and trader risk limits;
-- production monitoring and audit logs.
 
-## 16. Suggested CV Positioning
-
-Project title:
-
-```text
-Bond-CDS Basis Trading & Credit Curve Toolkit | Python, Excel/VBA
-```
-
-Suggested bullets:
-
-- Calibrated CDS-implied credit curves across issuers and maturities, bootstrapping hazard rates and survival probabilities from market CDS spreads.
-- Developed bond-CDS basis relative-value signals by comparing corporate bond spreads with maturity-matched CDS-implied spreads, using rolling z-scores, CS01-weighted position sizing, and transaction-cost-aware backtesting.
-- Added a macro-hedging overlay using credit, equity, volatility, liquidity, and rates proxies to reduce exposure in spread-widening and risk-off regimes.
-- Built a desk-style Excel dashboard to monitor CDS curves, hazard rates, survival probabilities, basis signals, positions, hedge overlay, stress tests, P&L attribution, and performance metrics.
-
-## 17. Interview Explanation
-
-Short explanation:
-
-```text
-I built a Python and Excel toolkit for bond-CDS basis trading. The Python engine calibrates CDS-implied curves from market spreads, bootstraps hazard rates and survival probabilities, estimates maturity-matched CDS spreads for corporate bonds, and calculates the bond-CDS basis. The strategy uses rolling basis z-scores to identify relative-value dislocations, sizes positions by CS01, applies transaction costs, and reduces exposure through a macro hedge overlay during risk-off regimes. The outputs are exported to an Excel dashboard for desk-style monitoring of curves, signals, positions, hedge notional, P&L attribution, stress tests, and performance.
-```
-
-## 18. Quick Command Reference
+## 15. Quick Command Reference
 
 Run tests:
 
