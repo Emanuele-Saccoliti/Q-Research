@@ -1,7 +1,5 @@
 # Bond-CDS Basis Trading & Credit Curve Toolkit
 
-Python research engine and Excel trading-dashboard export for a systematic credit relative-value project.
-
 The project calibrates CDS-implied credit curves, bootstraps hazard rates and survival probabilities, compares corporate bond spreads with maturity-matched CDS spreads, generates bond-CDS basis signals, sizes trades by CS01, applies a macro hedge overlay, runs a transaction-cost-aware backtest, and exports the results to an Excel workbook.
 
 
