@@ -1,6 +1,6 @@
 # Description
 
-AI-powered macro research pipeline that combines LLM-based financial news processing with NLP and machine learning to identify and classify emerging themes across growth, inflation, monetary policy, liquidity, and risk sentiment. These insights are then aggregated into dynamic state variables for macro-regime monitoring and cross-asset analysis.
+AI-powered macro research pipeline that combines LLM-based financial news processing with machine learning to identify and classify emerging themes across growth, inflation, monetary policy, liquidity, and risk sentiment. These insights are then aggregated into dynamic state variables for macro-regime monitoring and cross-asset analysis.
 
 
 ## Pipeline
