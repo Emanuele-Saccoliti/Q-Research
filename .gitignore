@@ -17,6 +17,9 @@ key.env
 /AI-macro-research/.gitignore
 /AI-macro-research/extensions.pdf
 /SystematicCredit/.gitignore
+/CopulaAlpha_LAB/notebooks/00_mvp_copula_alpha_research.ipynb
+/CopulaAlpha_LAB/notebooks/v2.ipynb
+/CopulaAlpha_LAB/personal-docs.md
 
 # AI Macro Research generated files
 /AI-macro-research/reports/
