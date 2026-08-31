@@ -1,0 +1,11 @@
+.DS_Store
+.env
+key.env
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+reports/
+data/theme_history.json

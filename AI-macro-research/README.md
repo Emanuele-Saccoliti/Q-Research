@@ -1,7 +1,8 @@
-# Description
+# Dynamic Macro Research Extension
 
-AI-powered macro research pipeline that combines LLM-based financial news processing with machine learning to identify and classify emerging themes across growth, inflation, monetary policy, liquidity, and risk sentiment. These insights are then aggregated into dynamic state variables for macro-regime monitoring and cross-asset analysis.
+An extended version of the original AI Macro Research Assistant. It combines LLM-based news normalization with NLP/ML theme discovery, dynamic narrative metrics, macro-regime inference, and transparent cross-asset research mapping.
 
+The original copied implementation is preserved in `legacy/`.
 
 ## Pipeline
 
@@ -13,12 +14,37 @@ LLM event normalization and summarization
 Text embeddings
         ↓
 Dynamic clustering of related events
-        ↓        
-Multi-label mapping (growth, inflation, policy, liquidity, and risk sentiment)
+        ↓
+Theme attention, momentum, breadth, novelty, and persistence
+        ↓
+Multi-label mapping to growth, inflation, policy, liquidity, and risk sentiment
         ↓
 Macro-regime inference and cross-asset research report
 ```
 
+## What Is Dynamic
+
+- The number of themes is not fixed in advance. Agglomerative clustering discovers groups from the current event set.
+- Theme IDs are matched to historical cluster centroids, allowing narratives to be followed across runs.
+- Attention measures the current share of deduplicated events assigned to a theme.
+- Momentum compares current attention with the theme's historical distribution.
+- Breadth measures coverage and diversity across independent sources.
+- Novelty measures semantic distance from historical theme centroids.
+- Persistence measures how frequently a matched theme remains active across recent runs.
+
+## Macro Mapping
+
+Each theme is mapped to a continuous macro vector:
+
+```text
+Growth:         contraction -1 ←→ +1 expansion
+Inflation:      disinflation -1 ←→ +1 inflation
+Policy:         easing -1 ←→ +1 tightening
+Liquidity:      contraction -1 ←→ +1 expansion
+Risk sentiment: risk-off -1 ←→ +1 risk-on
+```
+
+The default implementation uses semantic anchor prototypes. It is intentionally replaceable with a supervised multi-label classifier once a reviewed training set is available.
 
 ## Project Structure
 
@@ -33,7 +59,7 @@ Macro-regime inference and cross-asset research report
 │   ├── mapping.py                  # transparent cross-asset mapping
 │   ├── regimes.py                  # macro-axis and regime inference
 │   ├── reporting.py                # Markdown and JSON reports
-│   ├── retrievers.py               # online search and RSS retrieval
+│   ├── retrievers.py               # DuckDuckGo and RSS retrieval
 │   ├── schemas.py                  # Pydantic contracts
 │   └── workflow.py                 # end-to-end orchestration
 ├── tests/
@@ -102,6 +128,12 @@ ruff check .
 pytest
 ```
 
+## Limitations
+
+- Prototype-based macro mapping is a semantic baseline, not a trained alpha model.
+- Cross-asset coefficients encode transparent research priors and require historical validation.
+- Search snippets may omit context or publication timestamps.
+- Reliable regime research should combine narrative features with structured macro and market data.
 
 ## Disclaimer
 
