@@ -2,4 +2,36 @@
 __pycache__/
 *.py[cod]
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
 node_modules
+.env
+key.env
+
+# Files kept only in this local checkout
+/AI-macro-research/.gitignore
+/AI-macro-research/extensions.pdf
+/SystematicCredit/.gitignore
+
+# AI Macro Research generated files
+/AI-macro-research/reports/
+/AI-macro-research/data/theme_history.json
+
+# Systematic Credit generated files
+/SystematicCredit/data/raw/*
+/SystematicCredit/data/processed/*
+/SystematicCredit/data/synthetic/*
+/SystematicCredit/data/output/*
+/SystematicCredit/outputs/*
+/SystematicCredit/reports/figures/*
+!/SystematicCredit/data/raw/.gitkeep
+!/SystematicCredit/data/processed/.gitkeep
+!/SystematicCredit/data/synthetic/.gitkeep
+!/SystematicCredit/data/output/.gitkeep
+!/SystematicCredit/outputs/.gitkeep
+!/SystematicCredit/reports/figures/.gitkeep
