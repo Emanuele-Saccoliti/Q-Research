@@ -42,10 +42,12 @@ The current workflow is:
 
 Excel refresh alone does not rerun Python and does not rebuild the dashboard from scratch. If the code, config, assumptions, or generated data change, rerun the Python pipeline and then rebuild the Excel workbook.
 
+All commands below assume you are in the root of the cloned `Q-Research` repository.
+
 Normal workflow:
 
 ```bash
-cd "/Users/emanuelesaccoliti/VS Code/Projects/Q-Research/SystematicCredit"
+cd SystematicCredit
 source .venv/bin/activate
 python scripts/run_pipeline.py
 python scripts/build_dashboard.py
@@ -108,7 +110,7 @@ SystematicCredit/
 If `.venv` already exists, you can skip the virtual-environment creation and just activate it.
 
 ```bash
-cd "/Users/emanuelesaccoliti/VS Code/Projects/Q-Research/SystematicCredit"
+cd SystematicCredit
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -131,7 +133,7 @@ Expected result:
 From the project root:
 
 ```bash
-cd "/Users/emanuelesaccoliti/VS Code/Projects/Q-Research/SystematicCredit"
+cd SystematicCredit
 source .venv/bin/activate
 python scripts/run_pipeline.py
 ```
@@ -185,7 +187,7 @@ open "outputs/systematic_credit_toolkit/bond_cds_basis_dashboard.xlsx"
 Use this when you want to regenerate everything:
 
 ```bash
-cd "/Users/emanuelesaccoliti/VS Code/Projects/Q-Research/SystematicCredit"
+cd SystematicCredit
 source .venv/bin/activate
 python scripts/run_pipeline.py
 python scripts/build_dashboard.py
@@ -598,7 +600,7 @@ Builds the Excel workbook using the generated dashboard payload.
 Run all tests:
 
 ```bash
-cd "/Users/emanuelesaccoliti/VS Code/Projects/Q-Research/SystematicCredit"
+cd SystematicCredit
 source .venv/bin/activate
 .venv/bin/python -m pytest -q
 ```
@@ -650,7 +652,7 @@ It is a lightweight refresh/calculation helper, not a full Python launcher.
 Activate the virtual environment or install dependencies:
 
 ```bash
-cd "/Users/emanuelesaccoliti/VS Code/Projects/Q-Research/SystematicCredit"
+cd SystematicCredit
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
@@ -691,7 +693,7 @@ Current limitations:
 Run tests:
 
 ```bash
-cd "/Users/emanuelesaccoliti/VS Code/Projects/Q-Research/SystematicCredit"
+cd SystematicCredit
 source .venv/bin/activate
 .venv/bin/python -m pytest -q
 ```
