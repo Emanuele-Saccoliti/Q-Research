@@ -45,17 +45,11 @@ Excel refresh alone does not rerun Python and does not rebuild the dashboard fro
 Normal workflow:
 
 ```bash
-cd "/Users/emanuelesaccoliti/VS Code/Q-Research/SystematicCredit"
+cd "/Users/emanuelesaccoliti/VS Code/Projects/Q-Research/SystematicCredit"
 source .venv/bin/activate
 python scripts/run_pipeline.py
-node scripts/build_dashboard.mjs
+python scripts/build_dashboard.py
 open "outputs/systematic_credit_toolkit/bond_cds_basis_dashboard.xlsx"
-```
-
-If `node` is not available in your shell, use the bundled Codex Node runtime:
-
-```bash
-/Users/emanuelesaccoliti/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node scripts/build_dashboard.mjs
 ```
 
 ## 2. Repository Structure
@@ -66,7 +60,6 @@ SystematicCredit/
 |-- README.md
 |-- requirements.txt
 |-- pyproject.toml
-|-- .gitignore
 |
 |-- config/
 |   |-- curve_config.yaml
@@ -86,8 +79,7 @@ SystematicCredit/
 |
 |-- outputs/
 |   `-- systematic_credit_toolkit/
-|       |-- bond_cds_basis_dashboard.xlsx
-|       `-- previews/
+|       `-- bond_cds_basis_dashboard.xlsx
 |
 |-- reports/
 |   |-- figures/
@@ -95,7 +87,7 @@ SystematicCredit/
 |
 |-- scripts/
 |   |-- run_pipeline.py
-|   `-- build_dashboard.mjs
+|   `-- build_dashboard.py
 |
 |-- src/
 |   `-- systematic_credit/
@@ -116,7 +108,7 @@ SystematicCredit/
 If `.venv` already exists, you can skip the virtual-environment creation and just activate it.
 
 ```bash
-cd "/Users/emanuelesaccoliti/VS Code/Q-Research/SystematicCredit"
+cd "/Users/emanuelesaccoliti/VS Code/Projects/Q-Research/SystematicCredit"
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -139,7 +131,7 @@ Expected result:
 From the project root:
 
 ```bash
-cd "/Users/emanuelesaccoliti/VS Code/Q-Research/SystematicCredit"
+cd "/Users/emanuelesaccoliti/VS Code/Projects/Q-Research/SystematicCredit"
 source .venv/bin/activate
 python scripts/run_pipeline.py
 ```
@@ -173,13 +165,7 @@ Max drawdown: ...
 After running the Python pipeline, build the Excel workbook:
 
 ```bash
-node scripts/build_dashboard.mjs
-```
-
-If your shell cannot find `node`, use:
-
-```bash
-/Users/emanuelesaccoliti/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node scripts/build_dashboard.mjs
+python scripts/build_dashboard.py
 ```
 
 The dashboard is written to:
@@ -194,31 +180,15 @@ Open it with:
 open "outputs/systematic_credit_toolkit/bond_cds_basis_dashboard.xlsx"
 ```
 
-The builder also renders PNG previews for visual QA:
-
-```text
-outputs/systematic_credit_toolkit/previews/
-```
-
 ## 6. Full End-To-End Command Sequence
 
 Use this when you want to regenerate everything:
 
 ```bash
-cd "/Users/emanuelesaccoliti/VS Code/Q-Research/SystematicCredit"
+cd "/Users/emanuelesaccoliti/VS Code/Projects/Q-Research/SystematicCredit"
 source .venv/bin/activate
 python scripts/run_pipeline.py
-node scripts/build_dashboard.mjs
-open "outputs/systematic_credit_toolkit/bond_cds_basis_dashboard.xlsx"
-```
-
-If `node` is not on PATH:
-
-```bash
-cd "/Users/emanuelesaccoliti/VS Code/Q-Research/SystematicCredit"
-source .venv/bin/activate
-python scripts/run_pipeline.py
-/Users/emanuelesaccoliti/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node scripts/build_dashboard.mjs
+python scripts/build_dashboard.py
 open "outputs/systematic_credit_toolkit/bond_cds_basis_dashboard.xlsx"
 ```
 
@@ -618,7 +588,7 @@ These connect all modules into one reproducible workflow.
 ### Excel Dashboard Builder
 
 ```text
-scripts/build_dashboard.mjs
+scripts/build_dashboard.py
 ```
 
 Builds the Excel workbook using the generated dashboard payload.
@@ -628,7 +598,7 @@ Builds the Excel workbook using the generated dashboard payload.
 Run all tests:
 
 ```bash
-cd "/Users/emanuelesaccoliti/VS Code/Q-Research/SystematicCredit"
+cd "/Users/emanuelesaccoliti/VS Code/Projects/Q-Research/SystematicCredit"
 source .venv/bin/activate
 .venv/bin/python -m pytest -q
 ```
@@ -680,17 +650,17 @@ It is a lightweight refresh/calculation helper, not a full Python launcher.
 Activate the virtual environment or install dependencies:
 
 ```bash
-cd "/Users/emanuelesaccoliti/VS Code/Q-Research/SystematicCredit"
+cd "/Users/emanuelesaccoliti/VS Code/Projects/Q-Research/SystematicCredit"
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### `node: command not found`
+### `ModuleNotFoundError: No module named xlsxwriter`
 
-Use the bundled Codex Node runtime:
+Install the project dependencies in the active Python environment:
 
 ```bash
-/Users/emanuelesaccoliti/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node scripts/build_dashboard.mjs
+pip install -r requirements.txt
 ```
 
 ### Excel dashboard did not change after editing config
@@ -699,7 +669,7 @@ Run both steps again:
 
 ```bash
 python scripts/run_pipeline.py
-node scripts/build_dashboard.mjs
+python scripts/build_dashboard.py
 ```
 
 ## 14. Limitations
@@ -721,7 +691,7 @@ Current limitations:
 Run tests:
 
 ```bash
-cd "/Users/emanuelesaccoliti/VS Code/Q-Research/SystematicCredit"
+cd "/Users/emanuelesaccoliti/VS Code/Projects/Q-Research/SystematicCredit"
 source .venv/bin/activate
 .venv/bin/python -m pytest -q
 ```
@@ -735,7 +705,7 @@ python scripts/run_pipeline.py
 Build Excel dashboard:
 
 ```bash
-node scripts/build_dashboard.mjs
+python scripts/build_dashboard.py
 ```
 
 Open Excel dashboard:
@@ -747,5 +717,5 @@ open "outputs/systematic_credit_toolkit/bond_cds_basis_dashboard.xlsx"
 Full rebuild:
 
 ```bash
-python scripts/run_pipeline.py && node scripts/build_dashboard.mjs && open "outputs/systematic_credit_toolkit/bond_cds_basis_dashboard.xlsx"
+python scripts/run_pipeline.py && python scripts/build_dashboard.py && open "outputs/systematic_credit_toolkit/bond_cds_basis_dashboard.xlsx"
 ```
