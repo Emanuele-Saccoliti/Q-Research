@@ -68,8 +68,10 @@ The default implementation uses semantic anchor prototypes. It is intentionally 
 
 ## Setup
 
+Run the following commands from the root of the cloned `Q-Research` repository.
+
 ```bash
-cd "/Users/emanuelesaccoliti/VS Code/_Archive/AI_Macro_ResearchAssistant/src/macro_research_assistant extension"
+cd AI-macro-research
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e ".[dev]"
@@ -138,4 +140,3 @@ pytest
 ## Disclaimer
 
 This project is intended for research and educational purposes only. It does not constitute investment advice, financial advice, trading advice, or a recommendation to buy, sell, or hold any asset. Model outputs should not be used for live trading or investment decisions without independent verification and professional judgment.
-
